@@ -28,31 +28,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Petugas</title>
-    <link rel="stylesheet" href="../style/style.css">
-</head>
-<body>
-    <div class="login-container">
-    <img src="../images/1.png" alt="Logo" class="logo">
-    <h2>Login Petugas</h2>
-
-    <form method="POST" action="login.php">
-        <label>Username</label><br>
-        <input type="text" name="username" required  class="input"><br><br>
-
-        <label>Password</label><br>
-        <input type="password" name="password" required  class="input"><br><br>
-
-        <button type="submit" class="button">Login</button>
-    </form>
-
-    <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
-</div>
-
-</body>
-</html>
