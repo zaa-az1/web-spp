@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FDF4D2;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* LOGIN */
+.login-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    padding: 35px 30px;
+    background-color: white;
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+}
+
+.login-container h2 {
+    text-align: center;
+    padding: 0;
+    margin: 0 0 4px;
+    color: #1E4620;
+    font-size: 22px;
+}
+
+/* tombol input */
+.input {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #2E6F40;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* button regis dan login */
+.button {
+    background-color: #2E6F40;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    width: 55%;
+    margin: 10px auto 10px;
+}
+
+.button:hover {
+    background-color: #1E4620;
+}
+/* DASHBOARD */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 280px;
+    background-color: #259f68;
+    color: #092328;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+}
+
+/* Logo */
+.brand {
+    display:flex;
+    gap: 10px;
+    margin: 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.logo-db {
+    width: 60px;
+    height: auto;
+    object-fit: cover;
+}
+.nama-spp {
+    font-weight: bold;
+    padding-top: 10px;
+    padding-right: 10px;
+    
+}
+
+.active:hover {
+    background-color: gray;
+}
+
+/* Bagian bawah sidebar (user-info + garis + logout), didorong mentok ke dasar */
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+/* Nama / Role User */
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin: 0 0 12px 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.user-name {
+    color: #165823;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-role {
+    font-weight: bold;
+    color: white;
+    background-color: #165823;
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+/* sidebar */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    min-height: calc(100vh - 150px);
+}
+
+.sidebar-menu a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+.sidebar-menu a {
+    font-weight: bold;
+}
+
+.sidebar-menu a:hover {
+    background-color: white;
+    color: #165823;
+}
+
+.sidebar-hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    width: 100%;
+    margin: 0 0 12px 0;
+}
+
+
+/* Logout */
+.logout-link {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.logout-link:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+/* KELOLA PETUGAS */
+/* MAIN */
+.container {
+    margin-left: 300px;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #FDF4D2;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 15px;
+    
+}
+.container h2, .container h3 {
+    margin-bottom: 15px;
+}
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.container th {
+    background: #2E6F40;
+    color: #fff;
+    text-align: left;
+    padding: 12px 15px;
+}
+.container td {
+    padding: 12px 15px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+}
+.container tr:hover td {
+    background: #f4f9f4;
+}
+.container a {
+    color: #2E6F40;
+    font-weight: bold;
+    text-decoration: none;
+}
+.container input, .container button, .container select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.container button {
+    background: #2E6F40;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.tmbh {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0 20px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.tmbh:hover {
+    background-color: #092328;
+    color: white;
+    transform: translateY(-2px);
+}
+.container h3 {
+    font-size: 18px;
+    color: #1E4620;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    background-color: #fff;
+    width: 100%;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-card label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.form-card input[type="text"],
+.form-card select {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    background-color: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-card input[type="text"]:focus,
+.form-card select:focus {
+    outline: none;
+    border-color: #2E6F40;
+    box-shadow: 0 0 0 3px rgba(46, 111, 64, 0.15);
+}
+
+.form-card .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-card button[type="submit"] {
+    background-color: #2E6F40;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-card button[type="submit"]:hover {
+    background-color: #1E4620;
+}
+
+.form-card .batal-link {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-card .batal-link:hover {
+    text-decoration: underline;
+    color: #c0392b;
+}
