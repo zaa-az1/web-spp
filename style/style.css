@@ -290,6 +290,7 @@ label {
     margin-bottom: 20px;
 }
 
+/* --- 1. KEMBALIKAN UKURAN DEFAULT (AGAR HALAMAN LAIN TIDAK RUSAK) --- */
 .form-card {
     background-color: #fff;
     width: 100%;
@@ -308,8 +309,9 @@ label {
 }
 
 .form-card input[type="text"],
+.form-card input[type="password"],
 .form-card select {
-    width: 100%;
+    width: 100%; 
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px 12px;
@@ -318,9 +320,11 @@ label {
     margin-bottom: 20px;
     background-color: #fff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
 }
 
 .form-card input[type="text"]:focus,
+.form-card input[type="password"]:focus,
 .form-card select:focus {
     outline: none;
     border-color: #2E6F40;
@@ -359,4 +363,29 @@ label {
 .form-card .batal-link:hover {
     text-decoration: underline;
     color: #c0392b;
+}
+
+/* --- 2. CLASS TAMBAHAN KHUSUS UNTUK FORM INPUT (Mengecilkan Ukuran) --- */
+.form-card.form-mini {
+    width: 35%; 
+    min-width: 300px;
+    padding: 20px 25px;
+}
+
+.form-card.form-mini label {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.form-card.form-mini input[type="text"],
+.form-card.form-mini input[type="password"],
+.form-card.form-mini select {
+    padding: 8px 10px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.form-card.form-mini button[type="submit"] {
+    padding: 9px 20px;
+    font-size: 13px;
 }

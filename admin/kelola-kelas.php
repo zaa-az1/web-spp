@@ -127,31 +127,32 @@ $hasil_list = mysqli_query($koneksi, $query);
 </div>
 
 <main class="container">
-    <div class="form-card">
-        <h2>Kelola Data Kelas</h2>
+    <h2>Kelola Data Kelas</h2>
 
-        <?php if ($aksi === 'tambah' || $aksi === 'edit'): ?>
-
-            <h3><?= $aksi === 'edit' ? 'Edit Kelas' : 'Tambah Kelas Baru' ?></h3>
-
+    <!-- BAGIAN FORM TAMBAH / EDIT -->
+    <?php if ($aksi === 'tambah' || $aksi === 'edit'): ?>
+        <h3 class="tmbh"><?= $aksi === 'edit' ? 'Edit Kelas' : 'Tambah Kelas Baru' ?></h3>
+        
+        <!-- Pemanggilan class form-mini untuk mengecilkan form -->
+        <div class="form-card form-mini" style="margin-bottom: 30px;">
             <form method="POST" action="kelola-kelas.php">
                 <input type="hidden" name="aksi" value="<?= $aksi === 'edit' ? 'update' : 'tambah' ?>">
                 <?php if ($aksi === 'edit'): ?>
                     <input type="hidden" name="id_kelas" value="<?= $kelas_edit['id_kelas'] ?>">
                 <?php endif; ?>
 
-                <label>Tingkat</label><br>
+                <label>Tingkat</label>
                 <select name="tingkat" required>
                     <option value="">-- Pilih Tingkat --</option>
                     <option value="X" <?= ($aksi === 'edit' && $kelas_edit['tingkat'] === 'X') ? 'selected' : '' ?>>X</option>
                     <option value="XI" <?= ($aksi === 'edit' && $kelas_edit['tingkat'] === 'XI') ? 'selected' : '' ?>>XI</option>
                     <option value="XII" <?= ($aksi === 'edit' && $kelas_edit['tingkat'] === 'XII') ? 'selected' : '' ?>>XII</option>
-                </select><br><br>
+                </select>
 
-                <label>Nama Kelas</label><br>
-                <input type="text" name="nama_kelas" value="<?= $aksi === 'edit' ? htmlspecialchars($kelas_edit['nama_kelas']) : '' ?>" placeholder="Contoh: RPL 1" required><br><br>
+                <label>Nama Kelas</label>
+                <input type="text" name="nama_kelas" value="<?= $aksi === 'edit' ? htmlspecialchars($kelas_edit['nama_kelas']) : '' ?>" placeholder="Contoh: RPL 1" required>
 
-                <label>Kompetensi Keahlian</label><br>
+                <label>Kompetensi Keahlian</label>
                 <select name="kompetensi_keahlian" required>
                     <option value="">-- Pilih Jurusan --</option>
                     <?php
@@ -166,59 +167,60 @@ $hasil_list = mysqli_query($koneksi, $query);
                     ?>
                         <option value="<?= $j ?>" <?= $selected ?>><?= $j ?></option>
                     <?php endforeach; ?>
-                </select><br><br>
-
-                <button type="submit">Simpan</button>
-                <a href="kelola-kelas.php">Batal</a>
-            </form>
-
-        <?php else: ?>
-
-            <div style="margin-bottom: 15px;">
-                <a href="kelola-kelas.php?aksi=tambah">Tambah Kelas</a>
-            </div>
-
-            <form method="GET" action="kelola-kelas.php" style="margin-bottom: 15px;">
-                <input type="text" name="search" placeholder="Cari nama kelas / jurusan..." value="<?= htmlspecialchars($search) ?>">
-
-                <select name="filter_tingkat">
-                    <option value="">Semua Tingkat</option>
-                    <option value="X" <?= $filter_tingkat === 'X' ? 'selected' : '' ?>>X</option>
-                    <option value="XI" <?= $filter_tingkat === 'XI' ? 'selected' : '' ?>>XI</option>
-                    <option value="XII" <?= $filter_tingkat === 'XII' ? 'selected' : '' ?>>XII</option>
                 </select>
 
-                <button type="submit">Cari / Filter</button>
-                <a href="kelola-kelas.php"><button type="button">Reset</button></a>
+                <div class="form-actions">
+                    <button type="submit">Simpan</button>
+                    <a href="kelola-kelas.php" class="batal-link">Batal</a>
+                </div>
             </form>
+        </div>
+    <?php else: ?>
+        <!-- TOMBOL TAMBAH -->
+        <div style="margin-bottom: 15px;">
+            <a href="kelola-kelas.php?aksi=tambah" class="tmbh">Tambah Kelas</a>
+        </div>
+    <?php endif; ?>
 
-            <table border="1" cellpadding="8" cellspacing="0">
-                <tr>
-                    <th>Tingkat</th>
-                    <th>Nama Kelas</th>
-                    <th>Kompetensi Keahlian</th>
-                    <th>Aksi</th>
-                </tr>
-                <?php if (mysqli_num_rows($hasil_list) > 0): ?>
-                    <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['tingkat']) ?></td>
-                        <td><?= htmlspecialchars($row['nama_kelas']) ?></td>
-                        <td><?= htmlspecialchars($row['kompetensi_keahlian']) ?></td>
-                        <td>
-                            <a href="kelola-kelas.php?aksi=edit&id=<?= $row['id_kelas'] ?>">Edit</a> |
-                            <a href="kelola-kelas.php?aksi=hapus&id=<?= $row['id_kelas'] ?>"
-                               onclick="return confirm('Yakin hapus kelas ini?')">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr><td colspan="4" style="text-align:center;">Data kelas tidak ditemukan.</td></tr>
-                <?php endif; ?>
-            </table>
+    <!-- BAGIAN PENCARIAN & TABEL (Selalu Tampil) -->
+    <form method="GET" action="kelola-kelas.php" style="margin-bottom: 15px;">
+        <input type="text" name="search" placeholder="Cari nama kelas / jurusan..." value="<?= htmlspecialchars($search) ?>" style="width: auto; display: inline-block;">
 
+        <select name="filter_tingkat" style="width: auto; display: inline-block; margin-left: 5px;">
+            <option value="">Semua Tingkat</option>
+            <option value="X" <?= $filter_tingkat === 'X' ? 'selected' : '' ?>>X</option>
+            <option value="XI" <?= $filter_tingkat === 'XI' ? 'selected' : '' ?>>XI</option>
+            <option value="XII" <?= $filter_tingkat === 'XII' ? 'selected' : '' ?>>XII</option>
+        </select>
+
+        <button type="submit" style="margin-left: 5px;">Cari / Filter</button>
+        <a href="kelola-kelas.php"><button type="button" style="margin-left: 5px;">Reset</button></a>
+    </form>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>Tingkat</th>
+            <th>Nama Kelas</th>
+            <th>Kompetensi Keahlian</th>
+            <th>Aksi</th>
+        </tr>
+        <?php if (mysqli_num_rows($hasil_list) > 0): ?>
+            <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
+            <tr>
+                <td><?= htmlspecialchars($row['tingkat']) ?></td>
+                <td><?= htmlspecialchars($row['nama_kelas']) ?></td>
+                <td><?= htmlspecialchars($row['kompetensi_keahlian']) ?></td>
+                <td>
+                    <a href="kelola-kelas.php?aksi=edit&id=<?= $row['id_kelas'] ?>">Edit</a> |
+                    <a href="kelola-kelas.php?aksi=hapus&id=<?= $row['id_kelas'] ?>"
+                       onclick="return confirm('Yakin hapus kelas ini?')">Hapus</a>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <tr><td colspan="4" style="text-align:center;">Data kelas tidak ditemukan.</td></tr>
         <?php endif; ?>
-    </div>
+    </table>
 </main>
 
 </body>

@@ -99,10 +99,8 @@ $hasil_list = mysqli_query($koneksi, $query);
     <main class="container">
         <h2>Kelola Data Petugas</h2>
         <?php if ($aksi === 'tambah' || $aksi === 'edit'): ?>
-
             <h3 class="tmbh"><?= $aksi === 'edit' ? 'Edit Petugas' : 'Tambah Petugas Baru' ?></h3>
-
-            <div class="form-card">
+            <div class="form-card form-mini" style="margin-bottom: 30px;">
                 <form method="POST" action="proses-petugas.php">
                     <input type="hidden" name="aksi" value="<?= $aksi === 'edit' ? 'update' : 'tambah' ?>">
                     <?php if ($aksi === 'edit'): ?>
@@ -130,46 +128,42 @@ $hasil_list = mysqli_query($koneksi, $query);
                     </div>
                 </form>
             </div>
-
         <?php else: ?>
-
             <div style="margin-bottom: 15px;">
                 <a href="kelola-petugas.php?aksi=tambah" class="tmbh">Tambah Petugas</a>
             </div>
-
-            <form method="GET" action="kelola-petugas.php" style="margin-bottom: 15px;">
-                <input type="text" name="search" placeholder="Cari nama petugas..." value="<?= htmlspecialchars($search) ?>">
-                <button type="submit">Cari</button>
-                <?php if ($search !== ''): ?>
-                    <a href="kelola-petugas.php"><button type="button">Reset</button></a>
-                <?php endif; ?>
-            </form>
-
-            <table border="1" cellpadding="8" cellspacing="0">
-                <tr>
-                    <th>Username</th>
-                    <th>Nama</th>
-                    <th>Level</th>
-                    <th>Aksi</th>
-                </tr>
-                <?php if (mysqli_num_rows($hasil_list) > 0): ?>
-                    <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['username']) ?></td>
-                        <td><?= htmlspecialchars($row['nama_petugas']) ?></td>
-                        <td><?= htmlspecialchars($row['level']) ?></td>
-                        <td>
-                            <a href="kelola-petugas.php?aksi=edit&id=<?= $row['id_petugas'] ?>">Edit</a> |
-                            <a href="kelola-petugas.php?aksi=hapus&id=<?= $row['id_petugas'] ?>" onclick="return confirm('Yakin hapus petugas ini?')">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr><td colspan="4" style="text-align:center;">Data petugas tidak ditemukan.</td></tr>
-                <?php endif; ?>
-            </table>
-
         <?php endif; ?>
+        <form method="GET" action="kelola-petugas.php" style="margin-bottom: 15px;">
+            <input type="text" name="search" placeholder="Cari nama petugas..." value="<?= htmlspecialchars($search) ?>">
+            <button type="submit">Cari</button>
+            <?php if ($search !== ''): ?>
+                <a href="kelola-petugas.php"><button type="button">Reset</button></a>
+            <?php endif; ?>
+        </form>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tr>
+                <th>Username</th>
+                <th>Nama</th>
+                <th>Level</th>
+                <th>Aksi</th>
+            </tr>
+            <?php if (mysqli_num_rows($hasil_list) > 0): ?>
+                <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['username']) ?></td>
+                    <td><?= htmlspecialchars($row['nama_petugas']) ?></td>
+                    <td><?= htmlspecialchars($row['level']) ?></td>
+                    <td>
+                        <a href="kelola-petugas.php?aksi=edit&id=<?= $row['id_petugas'] ?>">Edit</a> |
+                        <a href="kelola-petugas.php?aksi=hapus&id=<?= $row['id_petugas'] ?>" onclick="return confirm('Yakin hapus petugas ini?')">Hapus</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr><td colspan="4" style="text-align:center;">Data petugas tidak ditemukan.</td></tr>
+            <?php endif; ?>
+        </table>
     </main>
 </body>
 </html>
