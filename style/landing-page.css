@@ -20,7 +20,7 @@ body {
     max-width: 420px; 
     padding: 40px 30px;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 1);
     text-align: center;
 }
 

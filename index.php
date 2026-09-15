@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Informasi Pembayaran SPP</title>
     <link rel="stylesheet" href="style/landing-page.css">
+    <style>
+        body {
+            background-image: url('images/landing-page.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 
