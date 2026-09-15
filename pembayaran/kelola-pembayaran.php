@@ -254,8 +254,8 @@ if ($aksi === 'list') {
                         <label>Tahun Pembayaran</label>
                         <div class="tahun-selector">
                             <input type="number" value="<?= htmlspecialchars($tahun_form) ?>" readonly class="input-tahun-readonly">
-                            <a href="kelola-pembayaran.php?aksi=tambah&nis=<?= urlencode($siswa_dipilih['nis']) ?>&tahun_dibayar=<?= urlencode($tahun_form - 1) ?>" class="btn-tahun">&laquo; Tahun Sebelumnya</a>
-                            <a href="kelola-pembayaran.php?aksi=tambah&nis=<?= urlencode($siswa_dipilih['nis']) ?>&tahun_dibayar=<?= urlencode($tahun_form + 1) ?>" class="btn-tahun">Tahun Berikutnya &raquo;</a>
+                            <a href="kelola-pembayaran.php?aksi=tambah&nis=<?= urlencode($siswa_dipilih['nis']) ?>&tahun_dibayar=<?= urlencode($tahun_form - 1) ?>" class="btn-tahun">Tahun Sebelumnya</a>
+                            <a href="kelola-pembayaran.php?aksi=tambah&nis=<?= urlencode($siswa_dipilih['nis']) ?>&tahun_dibayar=<?= urlencode($tahun_form + 1) ?>" class="btn-tahun">Tahun Berikutnya</a>
                         </div>
 
                         <label>SPP (Tahun — Nominal per Bulan)</label>
@@ -267,8 +267,6 @@ if ($aksi === 'list') {
 
                         <label>Jumlah Bayar per Bulan</label>
                         <input type="number" name="jumlah_bayar" placeholder="Masukkan nominal per bulan..." required>
-                        <small class="helper-text">*Nominal ini akan dicatat sama untuk setiap bulan yang dicentang.</small>
-
                         <div class="form-actions">
                             <button type="submit" class="btn-submit">Simpan Pembayaran</button>
                             <a href="kelola-pembayaran.php" class="batal-link">Batal</a>
@@ -317,9 +315,6 @@ if ($aksi === 'list') {
 
                 <?php if ($daftar_siswa_kelas): ?>
                     <div class="table-card">
-                        <div class="table-card-header">
-                            <h4>Daftar Siswa di Kelas Terpilih</h4>
-                        </div>
                         <table>
                             <thead>
                                 <tr>
@@ -401,9 +396,9 @@ if ($aksi === 'list') {
 
         <?php else: ?>
 
-            <!-- TOOLBAR: TOMBOL TAMBAH DI KIRI, FILTER & PENCARIAN DI KANAN -->
+            <!-- TOOLBAR -->
             <div class="toolbar-container">
-                <a href="kelola-pembayaran.php?aksi=tambah" class="btn-tambah">+ Input Pembayaran Baru</a>
+                <a href="kelola-pembayaran.php?aksi=tambah" class="btn-tambah">Input Pembayaran Baru</a>
 
                 <form method="GET" action="kelola-pembayaran.php" class="filter-form">
                     <input type="text" name="search" placeholder="Cari NIS atau Nama..." value="<?= htmlspecialchars($search) ?>" class="filter-input">
@@ -427,7 +422,7 @@ if ($aksi === 'list') {
                 </form>
             </div>
 
-            <!-- TABEL HASIL PEMBAYARAN -->
+            <!-- TABEL PEMBAYARAN -->
             <div class="table-card">
                 <table>
                     <thead>
