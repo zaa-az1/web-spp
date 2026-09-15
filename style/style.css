@@ -6,10 +6,12 @@
 
 body {
     background: #FDF4D2;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* LOGIN */
+/* ==========================================
+   1. LOGIN
+   ========================================== */
 .login-container {
     position: fixed;
     top: 50%;
@@ -18,7 +20,6 @@ body {
     width: 420px;
     padding: 35px 30px;
     background-color: white;
-    border: none;
     border-radius: 16px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -34,20 +35,17 @@ body {
 
 .login-container h2 {
     text-align: center;
-    padding: 0;
-    margin: 0 0 4px;
     color: #1E4620;
     font-size: 22px;
+    margin-bottom: 4px;
 }
 
-/* tombol input */
 .input {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px 12px;
     margin-bottom: 14px;
     width: 100%;
-    font-family: Arial, sans-serif;
     font-size: 14px;
     transition: border-color 0.2s ease;
 }
@@ -63,10 +61,9 @@ label {
     margin-bottom: 6px;
     font-size: 14px;
     color: #333;
-    font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 
-/* button regis dan login */
 .button {
     background-color: #2E6F40;
     color: #fff;
@@ -84,7 +81,10 @@ label {
 .button:hover {
     background-color: #1E4620;
 }
-/* DASHBOARD */
+
+/* ==========================================
+   2. DASHBOARD & SIDEBAR
+   ========================================== */
 .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -97,69 +97,24 @@ label {
     position: fixed;
 }
 
-/* Logo */
 .brand {
-    display:flex;
+    display: flex;
     gap: 10px;
     margin: 0 20px;
-    font-family: Arial, Helvetica, sans-serif;
 }
+
 .logo-db {
     width: 60px;
     height: auto;
     object-fit: cover;
 }
+
 .nama-spp {
     font-weight: bold;
     padding-top: 10px;
     padding-right: 10px;
-    
 }
 
-.active:hover {
-    background-color: gray;
-}
-
-/* Bagian bawah sidebar (user-info + garis + logout), didorong mentok ke dasar */
-.sidebar-bottom {
-    margin-top: auto;
-}
-
-/* Nama / Role User */
-.user-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    padding: 10px 14px;
-    border-radius: 12px;
-    margin: 0 0 12px 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.user-name {
-    color: #165823;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.user-role {
-    font-weight: bold;
-    color: white;
-    background-color: #165823;
-    border-radius: 8px;
-    font-size: 12px;
-    padding: 4px 10px;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    margin-left: 10px;
-}
-
-/* sidebar */
 .sidebar-menu {
     display: flex;
     flex-direction: column;
@@ -176,30 +131,57 @@ label {
     padding: 10px 12px;
     margin-bottom: 6px;
     border-radius: 8px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 15px;
+    font-weight: bold;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-
-.sidebar-menu a {
-    font-weight: bold;
-}
-
-.sidebar-menu a:hover {
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
     background-color: white;
     color: #165823;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.user-name {
+    color: #165823;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-role {
+    font-weight: bold;
+    color: white;
+    background-color: #165823;
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    flex-shrink: 0;
 }
 
 .sidebar-hr {
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
-    width: 100%;
-    margin: 0 0 12px 0;
+    margin-bottom: 12px;
 }
 
-
-/* Logout */
 .logout-link {
     color: #fff;
     text-align: center;
@@ -210,20 +192,31 @@ label {
 .logout-link:hover {
     background-color: rgba(255, 0, 0, 0.2);
 }
-/* KELOLA PETUGAS */
-/* MAIN */
+
+/* ==========================================
+   3. MAIN CONTAINER & STYLING UMUM (Petugas, Kelas, Siswa, SPP)
+   ========================================== */
 .container {
     margin-left: 300px;
     padding: 30px;
     box-sizing: border-box;
     background-color: #FDF4D2;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 15px;
-    
+    min-height: 100vh;
 }
-.container h2, .container h3 {
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #1E4620;
+    font-size: 24px;
+}
+
+.container h3 {
+    font-size: 18px;
+    color: #1E4620;
     margin-bottom: 15px;
 }
+
+/* Tabel Standar untuk Seluruh Halaman */
 .container table {
     width: 100%;
     border-collapse: collapse;
@@ -232,68 +225,75 @@ label {
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
+
 .container th {
     background: #2E6F40;
     color: #fff;
     text-align: left;
     padding: 12px 15px;
+    font-size: 14px;
 }
+
 .container td {
     padding: 12px 15px;
     color: #333;
     border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
 }
+
 .container tr:hover td {
     background: #f4f9f4;
 }
+
 .container a {
     color: #2E6F40;
     font-weight: bold;
     text-decoration: none;
 }
-.container input, .container button, .container select {
+
+.container input, 
+.container button, 
+.container select {
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid #ccc;
 }
+
 .container button {
     background: #2E6F40;
     color: #fff;
     border: none;
     cursor: pointer;
+    font-weight: bold;
 }
 
+/* Tombol Tambah Standar (Petugas, Kelas, Siswa, SPP) */
 .tmbh {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background-color: whitesmoke;
-    border: 2px solid black;
-    color: white;
-    text-decoration: none;
+    background-color: #2E6F40;
+    color: white !important;
     padding: 10px 18px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: bold;
+    text-decoration: none;
     margin: 15px 0 20px;
+    box-shadow: 0 3px 8px rgba(46, 111, 64, 0.25);
     transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .tmbh:hover {
-    background-color: #092328;
-    color: white;
+    background-color: #1E4620;
     transform: translateY(-2px);
 }
-.container h3 {
-    font-size: 18px;
-    color: #1E4620;
-    margin-bottom: 20px;
-}
 
-/* --- 1. KEMBALIKAN UKURAN DEFAULT (AGAR HALAMAN LAIN TIDAK RUSAK) --- */
+/* Form Card Standar (Petugas, Kelas, Siswa, SPP) */
 .form-card {
     background-color: #fff;
     width: 100%;
+    max-width: 750px;
     padding: 30px;
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -305,26 +305,25 @@ label {
     font-size: 14px;
     color: #333;
     margin-bottom: 8px;
-    font-family: Arial, sans-serif;
 }
 
 .form-card input[type="text"],
+.form-card input[type="number"],
+.form-card input[type="date"],
 .form-card input[type="password"],
 .form-card select {
-    width: 100%; 
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px 12px;
     font-size: 14px;
-    font-family: Arial, sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     background-color: #fff;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease;
     box-sizing: border-box;
 }
 
-.form-card input[type="text"]:focus,
-.form-card input[type="password"]:focus,
+.form-card input:focus,
 .form-card select:focus {
     outline: none;
     border-color: #2E6F40;
@@ -335,6 +334,7 @@ label {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-top: 10px;
 }
 
 .form-card button[type="submit"] {
@@ -361,31 +361,357 @@ label {
 }
 
 .form-card .batal-link:hover {
-    text-decoration: underline;
     color: #c0392b;
 }
 
-/* --- 2. CLASS TAMBAHAN KHUSUS UNTUK FORM INPUT (Mengecilkan Ukuran) --- */
 .form-card.form-mini {
-    width: 35%; 
-    min-width: 300px;
+    width: 100%;
+    max-width: 420px;
     padding: 20px 25px;
 }
 
-.form-card.form-mini label {
-    font-size: 13px;
-    margin-bottom: 6px;
+/* ==========================================
+   4. TOOLBAR KHUSUS KELOLA PEMBAYARAN
+   ========================================== */
+.toolbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-.form-card.form-mini input[type="text"],
-.form-card.form-mini input[type="password"],
-.form-card.form-mini select {
-    padding: 8px 10px;
-    font-size: 13px;
-    margin-bottom: 15px;
+.btn-tambah {
+    display: inline-flex;
+    align-items: center;
+    background-color: #2E6F40;
+    color: #ffffff !important;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 8px rgba(46, 111, 64, 0.25);
 }
 
-.form-card.form-mini button[type="submit"] {
-    padding: 9px 20px;
+.btn-tambah:hover {
+    background-color: #1E4620;
+    transform: translateY(-2px);
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.filter-input {
+    width: 220px !important;
+    padding: 8px 12px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    background-color: #fff !important;
+    margin-bottom: 0 !important;
+}
+
+.filter-select {
+    padding: 8px 12px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    background-color: #fff !important;
+    cursor: pointer;
+    margin-bottom: 0 !important;
+}
+
+.btn-cari {
+    background-color: #2E6F40 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-weight: bold !important;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-cari:hover {
+    background-color: #1E4620 !important;
+}
+
+.btn-reset {
+    color: #c0392b !important;
     font-size: 13px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 4px;
+}
+
+.table-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.badge-kelas {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-bulan {
+    background: #fff3e0;
+    color: #e65100;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btn-action-edit {
+    color: #2E6F40 !important;
+    font-weight: bold;
+    margin-right: 8px;
+    text-decoration: none;
+}
+
+.btn-action-delete {
+    color: #c0392b !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ==========================================
+   5. ACCORDION & TRANSAKSI PEMBAYARAN
+   ========================================== */
+.form-header-back {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    color: #2E6F40 !important;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+.student-info-box {
+    background: #f4f9f4;
+    border-left: 4px solid #2E6F40;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.student-info-box p {
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.helper-text {
+    color: #777;
+    display: block;
+    margin-top: -12px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.tahun-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-tahun-readonly {
+    width: 110px !important;
+    margin-bottom: 0 !important;
+    text-align: center;
+    font-weight: bold;
+    background: #eee !important;
+}
+
+.btn-tahun {
+    padding: 8px 14px;
+    background: #e8f5e9;
+    color: #2E6F40 !important;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-tahun:hover {
+    background: #c8e6c9;
+}
+
+.tingkat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.tingkat-accordion {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.tingkat-accordion[open] {
+    border-color: #2E6F40;
+}
+
+.tingkat-summary {
+    padding: 14px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #1E4620;
+    background-color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.tingkat-summary::-webkit-details-marker {
+    display: none;
+}
+
+.tingkat-summary:hover {
+    background-color: #f4f9f4;
+}
+
+.tingkat-accordion[open] .tingkat-summary {
+    background-color: #2E6F40;
+    color: #ffffff;
+}
+
+.arrow-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.tingkat-accordion[open] .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.kelas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 18px 20px;
+    background-color: #fafafa;
+    border-top: 1px solid #eee;
+}
+
+.kelas-card {
+    display: block;
+    padding: 12px 16px;
+    background-color: #ffffff;
+    border: 1.5px solid #dcdcdc;
+    border-radius: 8px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.kelas-card:hover {
+    border-color: #2E6F40;
+    background-color: #f4f9f4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.kelas-card.active-kelas {
+    background-color: #2E6F40;
+    border-color: #1E4620;
+}
+
+.kelas-card.active-kelas .kelas-title,
+.kelas-card.active-kelas .kelas-sub {
+    color: #ffffff !important;
+}
+
+.kelas-title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #1E4620;
+    margin-bottom: 3px;
+}
+
+.kelas-sub {
+    font-size: 12px;
+    color: #666666;
+}
+
+.btn-pilih {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: #2E6F40;
+    color: #ffffff !important;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-pilih:hover {
+    background-color: #1E4620;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f9f9f9;
+    padding: 9px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-item:hover:not(.disabled) {
+    border-color: #2E6F40;
+    background: #f4f9f4;
+}
+
+.checkbox-item.disabled {
+    background: #eee;
+    color: #888;
+    cursor: not-allowed;
+    border-color: #ddd;
 }
