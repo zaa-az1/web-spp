@@ -35,6 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Login Petugas</title>
     <link rel="stylesheet" href="../style/style.css">
+    <style>
+        body {
+            background-image: url('../images/landing-page.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 1);
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
