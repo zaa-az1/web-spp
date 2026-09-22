@@ -83,7 +83,7 @@ $hasil_list = mysqli_query($koneksi, $query);
                 <a href="../admin/kelola-siswa.php">Siswa</a>
                 <a href="../admin/kelola-spp.php">SPP</a>
                 <a href="../pembayaran/kelola-pembayaran.php">Pembayaran</a>
-
+                <a href="../admin/laporan-pemasukan.php">Laporan Pemasukan</a>
                 <div class="sidebar-bottom">
                     <div class="user-info">
                         <p class="user-name"><?= htmlspecialchars($nama_petugas) ?></p>

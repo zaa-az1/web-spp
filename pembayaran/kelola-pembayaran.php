@@ -186,7 +186,6 @@ if ($aksi === 'list') {
             <img src="../images/1.png" alt="Logo" class="logo-db">
             <p class="nama-spp"> DASHBOARD <br >WEBSITE SPP</p>
         </div>
-
         <aside>
             <nav class="sidebar-menu">
             <?php if ($level == 'admin'): ?>
@@ -196,6 +195,7 @@ if ($aksi === 'list') {
                 <a href="../admin/kelola-siswa.php">Siswa</a>
                 <a href="../admin/kelola-spp.php">SPP</a>
                 <a href="../pembayaran/kelola-pembayaran.php" class="active">Pembayaran</a>
+                <a href="../admin/laporan-pemasukan.php">Laporan Pemasukan</a>
             <?php else: ?>
                 <a href="../auth/dashboard.php">Dashboard</a>
                 <a href="../admin/kelola-spp.php">SPP</a>

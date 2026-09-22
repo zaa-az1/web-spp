@@ -135,6 +135,7 @@ $jurusan_list = [
                 <a href="../admin/kelola-siswa.php" class="active">Siswa</a>
                 <a href="../admin/kelola-spp.php">SPP</a>
                 <a href="../pembayaran/kelola-pembayaran.php">Pembayaran</a>
+                <a href="../admin/laporan-pemasukan.php">Laporan Pemasukan</a>
             <?php else: ?>
                 <a href="../auth/dashboard.php">Dashboard</a>
                 <a href="../admin/kelola-spp.php">SPP</a>

@@ -108,6 +108,7 @@ $hasil_list = mysqli_query($koneksi, $query);
             <a href="../admin/kelola-siswa.php">Siswa</a>
             <a href="../admin/kelola-spp.php">SPP</a>
             <a href="../pembayaran/kelola-pembayaran.php">Pembayaran</a>
+            <a href="../admin/laporan-pemasukan.php">Laporan Pemasukan</a>
         <?php else: ?>
             <a href="../auth/dashboard.php">Dashboard</a>
             <a href="../admin/kelola-spp.php">SPP</a>

@@ -14,18 +14,21 @@ $nama_petugas = $_SESSION['nama_petugas'];
 $bulan_ini = date('n');
 $tahun_ini = date('Y');
 
+// Query 1: Siswa per Jurusan
 $q_jurusan = mysqli_query($koneksi, "
     SELECT k.kompetensi_keahlian, COUNT(s.nis) AS jumlah
     FROM kelas k LEFT JOIN siswa s ON s.id_kelas = k.id_kelas
     GROUP BY k.kompetensi_keahlian
 ");
 
+// Query 2: Siswa per Tingkat
 $q_tingkat = mysqli_query($koneksi, "
     SELECT k.tingkat, COUNT(s.nis) AS jumlah
     FROM kelas k LEFT JOIN siswa s ON s.id_kelas = k.id_kelas
     GROUP BY k.tingkat ORDER BY k.tingkat
 ");
 
+// Query 3: Siswa Menunggak
 $q_nunggak = mysqli_query($koneksi, "
     SELECT s.nis, s.nama, k.nama_kelas, k.tingkat
     FROM siswa s JOIN kelas k ON s.id_kelas = k.id_kelas
@@ -35,6 +38,16 @@ $q_nunggak = mysqli_query($koneksi, "
     )
     ORDER BY s.nama ASC
 ");
+
+// Query 4: Total Pemasukan Hari Ini
+$tgl_hari_ini = date('Y-m-d');
+$q_pemasukan_hari_ini = mysqli_query($koneksi, "
+    SELECT SUM(jumlah_bayar) AS total_today 
+    FROM pembayaran 
+    WHERE tgl_bayar = '$tgl_hari_ini'
+");
+$data_today = mysqli_fetch_assoc($q_pemasukan_hari_ini);
+$total_pemasukan_hari_ini = $data_today['total_today'] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +59,6 @@ $q_nunggak = mysqli_query($koneksi, "
 </head>
 <body>
     <div class="dashboard-container">
-
         <div class="brand">
             <img src="../images/1.png" alt="Logo" class="logo-db">
             <p class="nama-spp"> DASHBOARD <br >WEBSITE SPP</p>
@@ -61,6 +73,7 @@ $q_nunggak = mysqli_query($koneksi, "
                 <a href="../admin/kelola-siswa.php">Siswa</a>
                 <a href="../admin/kelola-spp.php">SPP</a>
                 <a href="../pembayaran/kelola-pembayaran.php">Pembayaran</a>
+                <a href="../admin/laporan-pemasukan.php">Laporan Pemasukan</a>
             <?php else: ?>
                 <a href="../auth/dashboard.php" class="active">Dashboard</a>
                 <a href="../admin/kelola-spp.php">SPP</a>
@@ -81,6 +94,12 @@ $q_nunggak = mysqli_query($koneksi, "
 
     <main class="container">
         <h2>Selamat Datang, <?= htmlspecialchars($nama_petugas) ?></h2>
+
+        <!-- CARD TOTAL PEMASUKAN HARI INI -->
+        <div class="student-info-box" style="background: #ffffff; border-left: 5px solid #2E6F40; box-shadow: 0 4px 12px rgba(0,0,0,0.06); padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+            <p style="font-size: 14px; color: #666; margin-bottom: 6px; font-weight: bold;">Pemasukan SPP Hari Ini (<?= date('d M Y') ?>):</p>
+            <h1 style="color: #1E4620; font-size: 28px; margin: 0;">Rp<?= number_format($total_pemasukan_hari_ini, 0, ',', '.') ?></h1>
+        </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 25px;">
             <!-- STATISTIK JURUSAN -->
