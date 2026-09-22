@@ -50,21 +50,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="login-container">
-    <img src="../images/1.png" alt="Logo" class="logo">
-    <h2>Login Petugas</h2>
+        <img src="../images/1.png" alt="Logo" class="logo">
+        <h2>Login Petugas</h2>
 
-    <form method="POST" action="login.php">
-        <label>Username</label><br>
-        <input type="text" name="username" required  class="input"><br><br>
+        <form method="POST" action="login.php">
+            <label>Username</label><br>
+            <input type="text" name="username" required  class="input"><br><br>
 
-        <label>Password</label><br>
-        <input type="password" name="password" required  class="input"><br><br>
+            <label>Password</label><br>
+            <input type="password" name="password" required  class="input"><br><br>
 
-        <button type="submit" class="button">Login</button>
-    </form>
-
-    
-</div>
+            <button type="submit" class="button">Login</button>
+        </form>
+    </div>
 
 </body>
 </html>
