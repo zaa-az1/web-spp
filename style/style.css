@@ -182,19 +182,25 @@ label {
     margin-bottom: 12px;
 }
 
+/* LINK LOGOUT & HOVER MERAH */
 .logout-link {
-    color: #fff;
+    color: #fff !important;
     text-align: center;
     font-weight: bold;
-    transition: background-color 0.2s ease;
+    border-radius: 6px;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .logout-link:hover {
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: #c0392b !important;
+    color: #ffffff !important;
 }
 
 /* ==========================================
-   3. MAIN CONTAINER & STYLING UMUM (Petugas, Kelas, Siswa, SPP)
+   3. MAIN CONTAINER & STYLING UMUM
    ========================================== */
 .container {
     margin-left: 300px;
@@ -216,7 +222,6 @@ label {
     margin-bottom: 15px;
 }
 
-/* Tabel Standar untuk Seluruh Halaman */
 .container table {
     width: 100%;
     border-collapse: collapse;
@@ -267,7 +272,6 @@ label {
     font-weight: bold;
 }
 
-/* Tombol Tambah Standar (Petugas, Kelas, Siswa, SPP) */
 .tmbh {
     display: inline-flex;
     align-items: center;
@@ -289,7 +293,6 @@ label {
     transform: translateY(-2px);
 }
 
-/* Form Card Standar (Petugas, Kelas, Siswa, SPP) */
 .form-card {
     background-color: #fff;
     width: 100%;
@@ -371,7 +374,7 @@ label {
 }
 
 /* ==========================================
-   4. TOOLBAR KHUSUS KELOLA PEMBAYARAN
+   4. TOOLBAR & AKSI TABEL
    ========================================== */
 .toolbar-container {
     display: flex;
@@ -486,10 +489,18 @@ label {
     text-decoration: none;
 }
 
+.btn-action-edit:hover {
+    text-decoration: underline;
+}
+
 .btn-action-delete {
     color: #c0392b !important;
     font-weight: bold;
     text-decoration: none;
+}
+
+.btn-action-delete:hover {
+    text-decoration: underline;
 }
 
 /* ==========================================

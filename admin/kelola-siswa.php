@@ -174,8 +174,7 @@ $jurusan_list = [
                     <input type="text" name="nama" value="<?= $aksi === 'edit' ? htmlspecialchars($siswa_edit['nama']) : '' ?>" required>
 
                     <label>Tanggal Lahir</label>
-                    <!-- Tambah inline style agar seragam dengan kolom text -->
-                    <input type="date" name="tanggal_lahir" value="<?= $aksi === 'edit' ? $siswa_edit['tanggal_lahir'] : '' ?>" required style="width: 100%; border: 1px solid #ccc; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: Arial, sans-serif; margin-bottom: 15px; box-sizing: border-box;">
+                    <input type="date" name="tanggal_lahir" value="<?= $aksi === 'edit' ? $siswa_edit['tanggal_lahir'] : '' ?>" required>
 
                     <label>Kelas</label>
                     <select name="id_kelas" required>
@@ -192,8 +191,7 @@ $jurusan_list = [
                     </select>
 
                     <label>Alamat</label>
-                    <!-- Tambah inline style agar seragam dengan kolom text -->
-                    <textarea name="alamat" style="width: 100%; border: 1px solid #ccc; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: Arial, sans-serif; margin-bottom: 15px; box-sizing: border-box; resize: vertical; min-height: 80px;"><?= $aksi === 'edit' ? htmlspecialchars($siswa_edit['alamat']) : '' ?></textarea>
+                    <textarea name="alamat" style="width: 100%; border: 1px solid #ccc; border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: Arial, sans-serif; margin-bottom: 18px; box-sizing: border-box; resize: vertical; min-height: 80px;"><?= $aksi === 'edit' ? htmlspecialchars($siswa_edit['alamat']) : '' ?></textarea>
 
                     <label>No. Telepon</label>
                     <input type="text" name="no_telp" value="<?= $aksi === 'edit' ? htmlspecialchars($siswa_edit['no_telp']) : '' ?>">
@@ -207,63 +205,71 @@ $jurusan_list = [
 
         <?php else: ?>
 
-            <!-- TOMBOL TAMBAH (Muncul jika form tidak aktif) -->
             <div style="margin-bottom: 15px;">
                 <a href="kelola-siswa.php?aksi=tambah" class="tmbh">Tambah Siswa</a>
             </div>
 
         <?php endif; ?>
 
-        <!-- BAGIAN PENCARIAN & TABEL (Selalu Tampil) -->
-        <form method="GET" action="kelola-siswa.php" style="margin-bottom: 15px;">
-            <input type="text" name="search" placeholder="Cari nama siswa..." value="<?= htmlspecialchars($search) ?>" style="width: auto; display: inline-block;">
+        <!-- BAGIAN PENCARIAN & FILTER -->
+        <div class="toolbar-container" style="justify-content: flex-end;">
+            <form method="GET" action="kelola-siswa.php" class="filter-form">
+                <input type="text" name="search" placeholder="Cari nama siswa..." value="<?= htmlspecialchars($search) ?>" class="filter-input">
 
-            <select name="filter_tingkat" style="width: auto; display: inline-block; margin-left: 5px;">
-                <option value="">Semua Tingkat</option>
-                <option value="X" <?= $filter_tingkat === 'X' ? 'selected' : '' ?>>X</option>
-                <option value="XI" <?= $filter_tingkat === 'XI' ? 'selected' : '' ?>>XI</option>
-                <option value="XII" <?= $filter_tingkat === 'XII' ? 'selected' : '' ?>>XII</option>
-            </select>
+                <select name="filter_tingkat" class="filter-select">
+                    <option value="">Semua Tingkat</option>
+                    <option value="X" <?= $filter_tingkat === 'X' ? 'selected' : '' ?>>X</option>
+                    <option value="XI" <?= $filter_tingkat === 'XI' ? 'selected' : '' ?>>XI</option>
+                    <option value="XII" <?= $filter_tingkat === 'XII' ? 'selected' : '' ?>>XII</option>
+                </select>
 
-            <select name="filter_jurusan" style="width: auto; display: inline-block; margin-left: 5px;">
-                <option value="">Semua Jurusan</option>
-                <?php foreach ($jurusan_list as $j): ?>
-                    <option value="<?= $j ?>" <?= $filter_jurusan === $j ? 'selected' : '' ?>><?= $j ?></option>
-                <?php endforeach; ?>
-            </select>
+                <select name="filter_jurusan" class="filter-select">
+                    <option value="">Semua Jurusan</option>
+                    <?php foreach ($jurusan_list as $j): ?>
+                        <option value="<?= $j ?>" <?= $filter_jurusan === $j ? 'selected' : '' ?>><?= $j ?></option>
+                    <?php endforeach; ?>
+                </select>
 
-            <button type="submit" style="margin-left: 5px;">Cari / Filter</button>
-            <a href="kelola-siswa.php"><button type="button" style="margin-left: 5px;">Reset</button></a>
-        </form>
+                <button type="submit" class="btn-cari">Cari / Filter</button>
+                <?php if ($search !== '' || $filter_tingkat !== '' || $filter_jurusan !== ''): ?>
+                    <a href="kelola-siswa.php" class="btn-reset">Reset</a>
+                <?php endif; ?>
+            </form>
+        </div>
 
-        <table border="1" cellpadding="8" cellspacing="0">
-            <tr>
-                <th>NIS</th>
-                <th>Nama</th>
-                <th>Tingkat</th>
-                <th>Kelas</th>
-                <th>Jurusan</th>
-                <th>Aksi</th>
-            </tr>
-            <?php if (mysqli_num_rows($hasil_list) > 0): ?>
-                <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
-                <tr>
-                    <td><?= htmlspecialchars($row['nis']) ?></td>
-                    <td><?= htmlspecialchars($row['nama']) ?></td>
-                    <td><?= htmlspecialchars($row['tingkat']) ?></td>
-                    <td><?= htmlspecialchars($row['nama_kelas']) ?></td>
-                    <td><?= htmlspecialchars($row['kompetensi_keahlian']) ?></td>
-                    <td>
-                        <a href="kelola-siswa.php?aksi=edit&nis=<?= $row['nis'] ?>">Edit</a> |
-                        <a href="kelola-siswa.php?aksi=hapus&nis=<?= $row['nis'] ?>"
-                           onclick="return confirm('Yakin hapus siswa ini?')">Hapus</a>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <tr><td colspan="6" style="text-align:center;">Data siswa tidak ditemukan.</td></tr>
-            <?php endif; ?>
-        </table>
+        <!-- TABEL DATA SISWA -->
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NIS</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Jurusan</th>
+                        <th style="text-align: center;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (mysqli_num_rows($hasil_list) > 0): ?>
+                        <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
+                        <tr>
+                            <td><code><?= htmlspecialchars($row['nis']) ?></code></td>
+                            <td><strong><?= htmlspecialchars($row['nama']) ?></strong></td>
+                            <td><span class="badge-kelas"><?= htmlspecialchars($row['tingkat']) ?> <?= htmlspecialchars($row['nama_kelas']) ?></span></td>
+                            <td><?= htmlspecialchars($row['kompetensi_keahlian']) ?></td>
+                            <td style="text-align: center;">
+                                <a href="kelola-siswa.php?aksi=edit&nis=<?= $row['nis'] ?>" class="btn-action-edit">Edit</a>
+                                <a href="kelola-siswa.php?aksi=hapus&nis=<?= $row['nis'] ?>"
+                                   onclick="return confirm('Yakin hapus siswa ini?')" class="btn-action-delete">Hapus</a>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <tr><td colspan="5" style="text-align:center; padding: 25px; color: #888;">Data siswa tidak ditemukan.</td></tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 </html>

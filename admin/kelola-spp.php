@@ -103,57 +103,70 @@ $hasil_list = mysqli_query($koneksi, "SELECT * FROM spp ORDER BY tahun DESC");
     </div>
 
     <main class="container">
-        <div class="form-card">
-            <h2>Kelola Nominal SPP</h2>
+        <h2>Kelola Nominal SPP</h2>
 
-            <?php if ($aksi === 'tambah' || $aksi === 'edit'): ?>
+        <!-- FORM TAMBAH / EDIT -->
+        <?php if ($aksi === 'tambah' || $aksi === 'edit'): ?>
 
-                <h3><?= $aksi === 'edit' ? 'Edit Data SPP' : 'Tambah Data SPP' ?></h3>
+            <h3 class="tmbh"><?= $aksi === 'edit' ? 'Edit Data SPP' : 'Tambah Data SPP' ?></h3>
 
+            <div class="form-card form-mini" style="margin-bottom: 30px;">
                 <form method="POST" action="kelola-spp.php">
                     <input type="hidden" name="aksi" value="<?= $aksi === 'edit' ? 'update' : 'tambah' ?>">
                     <?php if ($aksi === 'edit'): ?>
                         <input type="hidden" name="id_spp" value="<?= $spp_edit['id_spp'] ?>">
                     <?php endif; ?>
 
-                    <label>Tahun</label><br>
-                    <input type="number" name="tahun" value="<?= $aksi === 'edit' ? htmlspecialchars($spp_edit['tahun']) : date('Y') ?>" required><br><br>
+                    <label>Tahun</label>
+                    <input type="number" name="tahun" value="<?= $aksi === 'edit' ? htmlspecialchars($spp_edit['tahun']) : date('Y') ?>" required>
 
-                    <label>Nominal</label><br>
-                    <input type="number" name="nominal" value="<?= $aksi === 'edit' ? htmlspecialchars($spp_edit['nominal']) : '' ?>" required><br><br>
+                    <label>Nominal</label>
+                    <input type="number" name="nominal" value="<?= $aksi === 'edit' ? htmlspecialchars($spp_edit['nominal']) : '' ?>" placeholder="Masukkan nominal SPP..." required>
 
-                    <button type="submit">Simpan</button>
-                    <a href="kelola-spp.php">Batal</a>
+                    <div class="form-actions">
+                        <button type="submit">Simpan</button>
+                        <a href="kelola-spp.php" class="batal-link">Batal</a>
+                    </div>
                 </form>
+            </div>
 
-            <?php else: ?>
+        <?php else: ?>
 
-                <div style="margin-bottom: 15px;">
-                    <a href="kelola-spp.php?aksi=tambah">Tambah Data SPP</a>
-                </div>
+            <div style="margin-bottom: 15px;">
+                <a href="kelola-spp.php?aksi=tambah" class="tmbh">Tambah Data SPP</a>
+            </div>
 
-                <table border="1" cellpadding="8" cellspacing="0">
-                    <tr>
-                        <th>Tahun</th>
-                        <th>Nominal</th>
-                        <th>Aksi</th>
-                    </tr>
-                    <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['tahun']) ?></td>
-                        <td>Rp<?= number_format($row['nominal'], 0, ',', '.') ?></td>
-                        <td>
-                            <a href="kelola-spp.php?aksi=edit&id=<?= $row['id_spp'] ?>">Edit</a> |
-                            <a href="kelola-spp.php?aksi=hapus&id=<?= $row['id_spp'] ?>"
-                            onclick="return confirm('Yakin hapus data SPP ini?')">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
+            <!-- TABEL DATA SPP -->
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tahun</th>
+                            <th>Nominal</th>
+                            <th style="text-align: center;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (mysqli_num_rows($hasil_list) > 0): ?>
+                            <?php while ($row = mysqli_fetch_assoc($hasil_list)): ?>
+                            <tr>
+                                <td><strong><?= htmlspecialchars($row['tahun']) ?></strong></td>
+                                <td>Rp<?= number_format($row['nominal'], 0, ',', '.') ?></td>
+                                <td style="text-align: center;">
+                                    <a href="kelola-spp.php?aksi=edit&id=<?= $row['id_spp'] ?>" class="btn-action-edit">Edit</a>
+                                    <a href="kelola-spp.php?aksi=hapus&id=<?= $row['id_spp'] ?>"
+                                       onclick="return confirm('Yakin hapus data SPP ini?')" class="btn-action-delete">Hapus</a>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr><td colspan="3" style="text-align:center; padding: 25px; color: #888;">Data SPP belum ada.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
                 </table>
+            </div>
 
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </main>
-</div>
 </body>
 </html>
